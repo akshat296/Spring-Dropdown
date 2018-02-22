@@ -51,7 +51,9 @@
 </select>
 <br/>
 <br/>
-<a href="/demo/build"> Go to React App</a> 
+
+
+<a href="/demo/index"> Go to React App</a> 
 </form>
 </div>
 </body>

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import com.thinksys.demo.service.CountriesService;
 
@@ -33,7 +33,9 @@ public class CountriesController {
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String home(Locale locale, Model model,HttpServletRequest request) {
-		if(request.getMethod().toString().equals("GET")) {	
+		 //registry.addResourceHandler("/resources/**").addResourceLocations("/resources/"); 
+		
+		if(request.getMethod().toString().equals("GET")){	
 			
 			String[] Countries = this.countriesServiceImpl.getCountries();
 			String[] States = this.countriesServiceImpl.getStates("Select");
@@ -44,10 +46,10 @@ public class CountriesController {
 			model.addAttribute("cities", Cities);
 			
 		} 
-		else if(request.getMethod().equals("POST") ) {
+		else if(request.getMethod().equals("POST")){
 			HttpSession session = request.getSession();
 			
-			try{
+			try {
 			String selectedcountry = request.getParameter("countries");
 			String cn = (String) session.getAttribute("selectedCountry");
 			String selectedstate = request.getParameter("states");
@@ -78,6 +80,12 @@ public class CountriesController {
 			}
 		return "home";
 	}
+	@RequestMapping(value = "/index", method = { RequestMethod.GET, RequestMethod.POST })
+	public String index(Locale locale, Model model,HttpServletRequest request) {
+		
+		return "index";
+	}
+	 
 }
 
 
