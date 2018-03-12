@@ -24,8 +24,4 @@ public class Country {
 	public void setStates(ArrayList<State> states) {
 		this.states = states;
 	}
-	
-	
-	
-	
 }
